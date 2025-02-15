@@ -19,10 +19,6 @@ A modern and responsive PG (Paying Guest) hostel showcase website built using Re
 - **Design & Planning:** Figma (for UI design)
 - **State Management:** React Hooks (useState, useEffect)
 
-## 📸 Screenshots
-
-(Add relevant screenshots here)
-
 ## 🔧 Installation
 
 1. **Clone the repository**
