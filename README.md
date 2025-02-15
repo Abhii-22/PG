@@ -48,3 +48,27 @@ A modern and responsive PG (Paying Guest) hostel showcase website built using Re
    ```
    You can now navigate through the website and explore its features.
    ```
+
+## 🚀 Deployment
+
+- The project can be deployed on Vercel, Netlify, or GitHub Pages.
+- 🛠️ Customization
+- Update the content and images in the assets folder.
+- Modify the color scheme in Home.css for personalization.
+- Add a backend integration if required for dynamic features.
+
+## 📌 To-Do List
+
+- Add backend for user authentication (if needed).
+- Improve UI animations.
+- Implement booking system.
+- Add more filtering options for PG search.
+- Enhance accessibility features.
+
+## 🤝 Contributing
+
+- If you'd like to contribute, feel free to fork this repository, make your changes, and submit a pull request.
+
+## 📜 License
+
+This project is licensed under the MIT License.
