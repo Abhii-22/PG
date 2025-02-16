@@ -2,15 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import logo from "../assets/logo.png";
 import ContactUs from "./ContactUs.jsx";
 import Footer from "./Footer.jsx";
-import Amenities from "./Amenities.jsx";
+import Amenities from "./amenities.jsx";
 import Buildings from "./Buildings.jsx";
 import Menu from "./MenuCard.jsx";
 import Feedback from "./feedback.jsx";
-import "./Home.css"; // ✅ Import the new CSS file
+import "./Home.css"; // ✅ Import CSS file
 
 const Home = () => {
   const [active, setActive] = useState("Home");
   const [showNavbar, setShowNavbar] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
   const timeoutId = useRef(null);
 
   const handleMouseMove = () => {
@@ -37,7 +38,7 @@ const Home = () => {
             <span className="navbar-title">Vinayaka PG</span>
           </div>
 
-          {/* Navigation Links */}
+          {/* Desktop Navigation */}
           <ul className="nav nav-pills ms-auto">
             {[
               { name: "Home", link: "#home" },
@@ -60,6 +61,27 @@ const Home = () => {
               </li>
             ))}
           </ul>
+
+          {/* ✅ Toggle Button for Mobile */}
+          <div className="navbar-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+            ☰
+          </div>
+
+          {/* ✅ Dropdown Menu for Mobile */}
+          <div className={`navbar-dropdown ${menuOpen ? "show" : ""}`}>
+            {[
+              { name: "Home", link: "#home" },
+              { name: "Rooms", link: "#buildings" },
+              { name: "Amenities", link: "#amenities" },
+              { name: "Menu", link: "#menu" },
+              { name: "Feedback", link: "#feedback" },
+              { name: "Contact Us", link: "#contact-us" },
+            ].map((item) => (
+              <a key={item.name} href={item.link} onClick={() => setMenuOpen(false)}>
+                {item.name}
+              </a>
+            ))}
+          </div>
         </header>
       </div>
 
