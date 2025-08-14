@@ -5,7 +5,7 @@ import ContactUs from "./ContactUs.jsx";
 import Footer from "./Footer.jsx";
 import Amenities from "./amenities.jsx";
 import Areas from "./Areas.jsx";
-import Menu from "./MenuCard.jsx";
+
 import Feedback from "./feedback.jsx";
 import "./Home.css"; // ✅ Import CSS file
 
@@ -45,7 +45,6 @@ const Home = () => {
               { name: "Home", link: "#home" },
               { name: "Areas", link: "#areas" },
               { name: "Amenities", link: "#amenities" },
-              { name: "Menu", link: "#menu" },
               { name: "Feedback", link: "#feedback" },
               { name: "Contact Us", link: "#contact-us" },
             ].map((item) => (
@@ -74,7 +73,6 @@ const Home = () => {
               { name: "Home", link: "#home" },
               { name: "Areas", link: "#areas" },
               { name: "Amenities", link: "#amenities" },
-              { name: "Menu", link: "#menu" },
               { name: "Feedback", link: "#feedback" },
               { name: "Contact Us", link: "#contact-us" },
             ].map((item) => (
@@ -100,9 +98,6 @@ const Home = () => {
         <Amenities />
       </div>
 
-      <div id="menu">
-        <Menu />
-      </div>
 
       <div id="feedback">
         <Feedback />

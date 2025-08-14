@@ -1,123 +1,59 @@
-.heading {
-    text-align: center;
-    font-size: 2rem;
-    color: #4a90e2;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    font-weight: bold;
+/* PG Amenities Section Styling */
+.amenities-section {
+  padding: 60px 20px;
+  background-color: #f8f9fa; /* Light grey background for the whole section */
 }
 
-/* Container for the amenities section using grid for 4 items per row */
+.heading {
+  text-align: center;
+  font-size: 2.8rem; /* Slightly larger heading */
+  color: #000000; /* Dark blue-grey color */
+  margin-bottom: 50px; /* More space below the heading */
+  font-weight: 700; /* Bolder font */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .amenities-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.0rem;
-    grid-row-gap: 3rem;
-    padding: 2rem 9rem;
-    justify-items: center;
-  }
-  
-  /* Each amenity item styled as a clickable link */
-  .amenity-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  /* Icon box styling to mimic a card/tile look */
-  .icon-box {
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .icon-box:hover {
-    background-color: #4a90e2;
-    transform: translateY(-5px);
-    box-shadow: #4a90e2 0 2px 4px;
-    caret-color: #fff;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 25px; /* Space between cards */
+  max-width: 1200px;
+  margin: 0 auto; /* Center the grid */
+}
 
-  /* Icon styling */
-  .icon-box i {
-    font-size: 2rem;
-    color: #4a90e2;
-  }
+.amenity-item {
+  background: #ffffff; /* White background for cards */
+  border-radius: 15px; /* More rounded corners */
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Softer shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  border: 1px solid #e9ecef; /* Subtle border */
+}
 
-  .icon-box:hover i {
-    color: #fff;
-  }
-  
-  /* Amenity label styling */
-  .amenity-label {
-    font-size: 1rem;
-    color: #4a90e2;
-    text-align: center;
-    line-height: 1.2;
-    font-weight: bold;
-  }
+.amenity-item:hover {
+  transform: translateY(-8px) scale(1.03); /* Lift and scale up on hover */
+  box-shadow: 0 12px 25px rgba(254, 255, 255, 0.15); /* Colored shadow on hover */
+}
 
-  /* ✅ Responsive Amenities Section */
-  .amenities-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Increased column width */
-    gap: 30px; /* Increased gap */
-    justify-content: center;
-    text-align: center;
-    padding: 30px; /* Increased padding */
-  }
-  
-  .amenity {
-    background: white;
-    padding: 20px; /* Increased padding */
-    border-radius: 12px; /* Slightly larger border radius */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* Stronger shadow */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .amenity:hover {
-    transform: scale(1.05); /* Slight hover effect */
-  }
-  
-  .amenity img {
-    width: 70px; /* Increased icon size */
-    height: 70px;
-  }
-  
-  .amenity p {
-    margin-top: 10px;
-    font-size: 18px; /* Increased text size */
-    font-weight: bold;
-    color: #007bff;
-  }
-  
-  /* Responsive Grid */
-  @media (min-width: 1200px) {
-    .amenities-container {
-      grid-template-columns: repeat(4, 1fr); /* 4 icons per row */
-    }
-  }
-  
-  @media (max-width: 1199px) {
-    .amenities-container {
-      grid-template-columns: repeat(3, 1fr); /* 3 icons per row */
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .amenities-container {
-      grid-template-columns: repeat(2, 1fr); /* 2 icons per row */
-    }
-  }
-  
+.icon-box {
+  margin-bottom: 15px;
+}
+
+.icon-box .bi {
+  font-size: 3rem; /* Larger icons */
+  color: #888; /* A nice shade of gray */
+  transition: color 0.3s ease;
+}
+
+.amenity-item:hover .icon-box .bi {
+  color: #555; /* Darker gray on hover */
+}
+
+.amenity-label {
+  font-size: 1rem;
+  font-weight: 600; /* Slightly bolder label */
+  color: #34495e; /* Dark grey for text */
+  line-height: 1.4;
+}

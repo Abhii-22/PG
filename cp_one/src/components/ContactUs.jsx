@@ -1,97 +1,45 @@
 import React from "react";
-import { FaPhoneAlt, FaWhatsapp, FaMapMarkerAlt } from "react-icons/fa";
-import pgLogo from "../assets/logo.png";
-import pgPP from "../assets/pamplate.png";
+import "./ContactUs.css"; // Import the new CSS file
 
 const ContactUs = () => {
   return (
-    <div id="contact-us" className="container my-5 py-5">
-      <h2 className="text-center text-primary fw-bold mb-4">Contact Us</h2>
-
-      <div className="row d-flex text-center text-md-start align-items-start">
-        {/* Section 1: PG Intro */}
-        <div className="col-md-4 p-4">
-          <h5 className="text-uppercase text-primary fw-bold mb-3">
-            Why Choose Vinayaka PG?
-          </h5>
-          <p className="text-muted">
+    <div id="contact-us" className="contact-us-section">
+      <div className="contact-us-container">
+        {/* Card 1: Why Choose Us */}
+        <div className="contact-card">
+          <h5>Why Choose Our PG?</h5>
+          <p>
             Enjoy a <strong>comfortable & secure</strong> stay with modern
-            amenities, <strong>24/7 support</strong>, and a peaceful
-            environment. Your <strong>home away from home</strong> at an
-            affordable price.
+            amenities and a friendly atmosphere, all at an affordable price.
           </p>
-          {/* Centered Logo Below Description */}
-          <div className="d-flex justify-content-center">
-            <img
-              src={pgLogo}
-              alt="Vinayaka PG Logo"
-              className="img-fluid mt-3"
-              style={{ maxHeight: "200px" }} // Adjusted size
-            />
+        </div>
+
+        {/* Card 2: Contact Details */}
+        <div className="contact-card">
+          <h5>Get in Touch</h5>
+          <div class="contact-item">
+            <i class="bi bi-telephone-fill"></i>
+            <span><strong>+91 7483198135</strong></span>
+          </div>
+          <a href="https://wa.me/917483198135" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <i class="bi bi-whatsapp"></i>
+            <span><strong>Chat on WhatsApp</strong></span>
+          </a>
+          <div class="contact-item">
+            <i class="bi bi-geo-alt-fill"></i>
+            <span><strong>#89, 18th main, 15th Cross, Near Post office, MRCR Layout, Vijayanagar, Bangalore</strong></span>
           </div>
         </div>
 
-        {/* Section 2: Contact Details */}
-        <div className="col-md-4 p-4 ">
-          <h5 className="text-uppercase text-primary fw-bold mb-3">
-            Get in Touch
-          </h5>
-          <p className="d-flex align-items-center">
-            <FaPhoneAlt
-              className="me-2 text-success"
-              style={{ fontSize: "1.5rem" }}
-            />
-            <strong>+91 88861 48989</strong>
-          </p>
-          <p>
-            <a
-              href="https://wa.me/918886148989"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="d-flex align-items-center text-decoration-none text-dark mb-3"
-            >
-              <FaWhatsapp
-                className="me-2 text-success"
-                style={{ fontSize: "1.5rem" }}
-              />
-              <strong>WhatsApp</strong>
-            </a>
-            {/* <img
-              src={pgPP}
-              alt="Vinayaka PG Logo"
-              className="img-fluid mt-5"
-              style={{ maxHeight: "200px" }} // Adjusted size
-            /> */}
-          </p>
-        </div>
-
-        {/* Section 3: Location with Google Map */}
-        <div className="col-md-4 p-4">
-          <h5 className="text-uppercase text-primary fw-bold mb-3">
-            Find Us Here
-          </h5>
-          <p className="d-flex align-items-center mb-5">
-            <FaMapMarkerAlt
-              className="me-2 text-danger mb-5"
-              style={{ fontSize: "1.8rem" }}
-            />
-            <strong>
-              1-55, Kuragallu Kuragallu - Malkapuram Road, Main, Road,
-              Kuragallu, Amaravati, Andhra Pradesh 522503
-            </strong>
-          </p>
+        {/* Card 3: Map */}
+        <div className="contact-card">
+          <h5>Our Location</h5>
           <iframe
-            title="Vinayaka PG Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.442850149274!2d80.52286877356033!3d16.453098929050256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35f385932ceedb%3A0x4f50e9b62be74f6c!2sSri%20Vinayaka%20Boys%20Hostel%20%26%20PG!5e0!3m2!1sen!2sin!4v1739137703185!5m2!1sen!2sin"
-            width="100%"
-            height="200"
-            style={{
-              borderRadius: "10px",
-              border: "0",
-              boxShadow: "2px 2px 10px rgba(0,0,0,0.1)",
-            }}
+            title="PG Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.020175255245!2d77.52923427845927!3d12.970560754713853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3df2b6f61611%3A0xc7ac8e95d96813ea!2s18th%20Main%20Rd%2C%20MRCR%20Layout%2C%20Stage%202%2C%20Vijayanagar%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1755167406001!5m2!1sen!2sin"
             allowFullScreen=""
             loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
       </div>

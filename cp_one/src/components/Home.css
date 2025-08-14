@@ -63,7 +63,7 @@ html, body {
 
 /* ✅ Centered Home Page */
 .home-container {
-    background-image: url(./home-image.jpg);
+    background-image: url(./home.jpg);
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -88,7 +88,7 @@ html, body {
 
 /* ✅ Properly Centered Welcome Text */
 .home-title {
-    color: white;
+    color: #bae25c;
     font-size: 50px;
     font-weight: bold;
     text-transform: uppercase;

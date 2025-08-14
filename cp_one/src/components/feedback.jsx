@@ -8,37 +8,37 @@ import "./feedback.css";
 const Feedback = () => {
   const reviews = [
     {
-      name: "John Doe",
+      name: "Abhishek",
       review:
         "The service exceeded my expectations! The staff was incredibly helpful, and the process was seamless. Highly recommended for anyone looking for quality service.",
-      image: "https://randomuser.me/api/portraits/men/1.jpg",
+      
     },
     {
-      name: "Jane Smith",
+      name: "Shalini",
       review:
         "I had a fantastic experience! The team was professional, and the support I received was top-notch. I will definitely be using their services again in the future.",
       image: "https://randomuser.me/api/portraits/women/1.jpg",
     },
     {
-      name: "Alice Johnson",
+      name: "Ganesh",
       review:
         "The staff was extremely friendly and made everything so easy. From start to finish, the process was smooth and stress-free. Thank you for the great service!",
       image: "https://randomuser.me/api/portraits/women/2.jpg",
     },
     {
-      name: "Bob Williams",
+      name: "Adarsh",
       review:
         "I was looking for something affordable yet reliable, and this was the perfect choice. The quality and efficiency were beyond my expectations. Great job!",
       image: "https://randomuser.me/api/portraits/men/2.jpg",
     },
     {
-      name: "Emma Brown",
+      name: "Kiran",
       review:
         "The level of professionalism and dedication shown by the team was remarkable. Their attention to detail and customer service is truly exceptional.",
       image: "https://randomuser.me/api/portraits/women/3.jpg",
     },
     {
-      name: "Michael Lee",
+      name: "manikanta",
       review:
         "Fast, efficient, and highly satisfactory! I was impressed by the quick turnaround time and the overall quality of the service. Keep up the great work!",
       image: "https://randomuser.me/api/portraits/men/3.jpg",
@@ -88,17 +88,7 @@ const Feedback = () => {
             <div key={index} className="feedback-card-wrapper">
               <div className="feedback-card">
                 <div className="feedback-icon-name">
-                  <img
-                    className="feedback-icon"
-                    src={review.image}
-                    alt={review.name}
-                    style={{
-                      borderRadius: "50%",
-                      width: "35px",
-                      height: "35px",
-                      objectFit: "cover",
-                    }}
-                  />
+                  
                   <h4 className="feedback-name">{review.name}</h4>
                 </div>
                 <p className="feedback-text">"{review.review}"</p>
