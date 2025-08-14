@@ -17,7 +17,7 @@ html, body {
     top: 0;
     left: 0;
     width: 100%;
-    background: #ffffff;
+    background: rgb(35,65,75);
     padding: 10px 15px;
     height: 60px;
     z-index: 10;
@@ -28,9 +28,8 @@ html, body {
 
 .navbar-logo {
     height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    object-fit: cover;
+    width: auto;
+    object-fit: contain;
 }
 
 .navbar-title {
@@ -40,7 +39,7 @@ html, body {
     text-transform: uppercase;
 }
 
-/* ✅ Navbar Links */
+/* Navbar Links */
 .nav-link {
     color: #4A90E2;
     font-size: 16px;
