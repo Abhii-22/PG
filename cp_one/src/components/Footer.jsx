@@ -5,7 +5,7 @@ const Footer = () => {
     <footer
       className="container-fluid text-center text-white py-3"
       style={{
-        background: "#4A90B2",
+        background: "rgb(35,65,75)",
         position: "relative",
         bottom: 0,
         width: "100%",

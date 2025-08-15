@@ -94,6 +94,29 @@ html, body {
     text-transform: uppercase;
     z-index: 2;
     position: relative;
+    margin-bottom: 1.5rem; /* Add margin to separate from button */
+}
+
+.get-started-btn {
+  padding: 1rem 2.5rem;
+  background-color: #bae25c;
+  color: #2d3748;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 2;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.get-started-btn:hover {
+  background-color: #a9c954;
+  transform: translateY(-3px);
 }
 
 /* ✅ View Rooms Button */

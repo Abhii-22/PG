@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/Medini logo White.png";
 import ContactUs from "./ContactUs.jsx";
 
 import Footer from "./Footer.jsx";
 import Amenities from "./amenities.jsx";
-import Areas from "./Areas.jsx";
 
 import Feedback from "./feedback.jsx";
 import "./Home.css"; // ✅ Import CSS file
@@ -41,25 +41,21 @@ const Home = () => {
 
           {/* Desktop Navigation */}
           <ul className="nav nav-pills ms-auto">
-            {[
-              { name: "Home", link: "#home" },
-              { name: "Areas", link: "#areas" },
-              { name: "Amenities", link: "#amenities" },
-              { name: "Feedback", link: "#feedback" },
-              { name: "Contact Us", link: "#contact-us" },
-            ].map((item) => (
-              <li key={item.name} className="nav-item mx-2">
-                <a
-                  href={item.link}
-                  className={`nav-link ${
-                    active === item.name ? "active-link" : ""
-                  }`}
-                  onClick={() => setActive(item.name)}
-                >
-                  {item.name}
-                </a>
-              </li>
-            ))}
+            <li className="nav-item mx-2">
+              <a href="#home" className={`nav-link ${active === 'Home' ? 'active-link' : ''}`} onClick={() => setActive('Home')}>Home</a>
+            </li>
+            <li className="nav-item mx-2">
+              <Link to="/areas" className={`nav-link ${active === 'Areas' ? 'active-link' : ''}`} onClick={() => setActive('Areas')}>Areas</Link>
+            </li>
+            <li className="nav-item mx-2">
+              <a href="#amenities" className={`nav-link ${active === 'Amenities' ? 'active-link' : ''}`} onClick={() => setActive('Amenities')}>Amenities</a>
+            </li>
+            <li className="nav-item mx-2">
+              <a href="#feedback" className={`nav-link ${active === 'Feedback' ? 'active-link' : ''}`} onClick={() => setActive('Feedback')}>Feedback</a>
+            </li>
+            <li className="nav-item mx-2">
+              <a href="#contact-us" className={`nav-link ${active === 'Contact Us' ? 'active-link' : ''}`} onClick={() => setActive('Contact Us')}>Contact Us</a>
+            </li>
           </ul>
 
           {/* ✅ Toggle Button for Mobile */}
@@ -88,10 +84,7 @@ const Home = () => {
       <div id="home" className="home-container">
         <div className="home-overlay"></div>
         <h1 className="home-title">Find Your Perfect PG Today</h1>
-      </div>
-
-      <div id="areas">
-        <Areas />
+        <Link to="/areas" className="get-started-btn">Get Started</Link>
       </div>
 
       <div id="amenities">

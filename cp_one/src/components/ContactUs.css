@@ -32,7 +32,7 @@
 .contact-card h5 {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #3498db; /* Blue accent color */
+  color: rgb(35,65,75); /* Blue accent color */
   margin-bottom: 20px;
   text-transform: uppercase;
 }
