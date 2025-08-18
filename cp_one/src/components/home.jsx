@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import areasData from "../data/pgData";
 import logo from "../assets/Medini logo White.png";
 import ContactUs from "./ContactUs.jsx";
 import Footer from "./Footer.jsx";
@@ -12,12 +13,30 @@ const Home = () => {
   const [active, setActive] = useState("Home");
   const [showNavbar, setShowNavbar] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchError, setSearchError] = useState("");
+  const navigate = useNavigate();
   const timeoutId = useRef(null);
 
   const handleMouseMove = () => {
     setShowNavbar(true);
     clearTimeout(timeoutId.current);
     timeoutId.current = setTimeout(() => setShowNavbar(false), 2000);
+  };
+
+  const handleSearch = () => {
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return;
+
+    const areaExists = areasData.some(
+      (area) => area.name.toLowerCase() === query
+    );
+
+    if (areaExists) {
+      navigate('/areas', { state: { searchQuery: query } });
+    } else {
+      setSearchError(`Sorry, we couldn't find any PGs in "${searchQuery}".`);
+    }
   };
 
   useEffect(() => {
@@ -82,8 +101,28 @@ const Home = () => {
       {/* Background Section with Welcome Text */}
       <div id="home" className="home-container">
         <div className="home-overlay"></div>
-        <h1 className="home-title">Find Your Perfect PG Today</h1>
-        <Link to="/areas" className="get-started-btn">Get Started</Link>
+        <div className="home-content">
+          <h1 className="home-title">Find Your Perfect PG Today</h1>
+          <p className="home-subtitle">
+            Discover the best paying guest accommodations with all the amenities you need for a comfortable stay.
+          </p>
+          <div className="search-container">
+            <input
+              type="text"
+              placeholder="Enter an area to search..."
+              className="search-input"
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setSearchError(""); // Clear error when user types
+              }}
+              onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+            />
+            <button className="search-button" onClick={handleSearch}>Search</button>
+          </div>
+          {searchError && <p className="search-error-message">{searchError}</p>}
+          <Link to="/areas" className="get-started-btn">Get Started</Link>
+        </div>
       </div>
 
       <div id="amenities">

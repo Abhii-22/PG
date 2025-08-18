@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Star, Wifi, Tv, Refrigerator, WashingMachine } from 'lucide-react';
 import './Areas.css';
@@ -21,6 +22,17 @@ const Areas = () => {
   const [selectedArea, setSelectedArea] = useState(null);
   const [selectedPg, setSelectedPg] = useState(null);
   const [currentImage, setCurrentImage] = useState(0);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.searchQuery) {
+      const query = location.state.searchQuery.toLowerCase();
+      const matchedArea = areasData.find(area => area.name.toLowerCase() === query);
+      if (matchedArea) {
+        setSelectedArea(matchedArea);
+      }
+    }
+  }, [location.state]);
 
   const handleSelectArea = (area) => setSelectedArea(area);
   const handleBackToAreas = () => setSelectedArea(null);
