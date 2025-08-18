@@ -42,7 +42,7 @@ const Areas = () => {
   };
 
   return (
-    <div id="areas" className="container mt-5 pt-5">
+    <div id="areas" className="container mt-5 pt-0">
       <AnimatePresence mode="wait">
         {!selectedArea && !selectedPg && (
           <motion.div
@@ -58,14 +58,34 @@ const Areas = () => {
               {areasData.map((area) => (
                 <motion.div
                   key={area.name}
-                  className="area-card"
-                  onClick={() => handleSelectArea(area)}
-                  whileHover={{ scale: 1.05, boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.2)' }}
+                  className="area-card-container"
+                  whileHover={{ scale: 1.02 }}
                   transition={{ type: 'spring', stiffness: 300 }}
+                  onClick={() => handleSelectArea(area)}
                 >
-                  <img src={area.image} alt={area.name} className="area-image" />
-                  <div className="area-card-overlay">
-                    <h3 className="area-card-name">{area.name}</h3>
+                  <div className="area-card">
+                    <img src={area.image} alt={area.name} className="area-image" />
+                    <div className="area-card-overlay">
+                      <h3 className="area-card-name">{area.name}</h3>
+                    </div>
+                  </div>
+                  <div className="area-details">
+                    <div className="area-features">
+                      <h5>Features</h5>
+                      <ul>
+                        {area.features.map((feature, index) => (
+                          <li key={index}>{feature}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="area-famous">
+                      <h5>Famous For</h5>
+                      <ul>
+                        {area.famous.map((place, index) => (
+                          <li key={index}>{place}</li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -97,8 +117,10 @@ const Areas = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <img src={pg.images[0]} alt={pg.name} className="pg-card-image" onClick={() => handleSelectPg(pg)} />
-                  <div className="pg-detailed-info">
+                  {pg.images && pg.images.length > 0 && (
+                    <img src={pg.images[0]} alt={pg.name} className="pg-card-image" onClick={() => handleSelectPg(pg)} />
+                  )}
+                  <div className={`pg-detailed-info ${!pg.images || pg.images.length === 0 ? 'no-image' : ''}`}>
                     <div className="pg-detailed-header">
                       <span className="pg-price">₹{pg.price.toLocaleString()}/month</span>
                       <span className="pg-sharing">{pg.sharing} Sharing</span>

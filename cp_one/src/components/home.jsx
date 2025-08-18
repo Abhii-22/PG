@@ -2,11 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/Medini logo White.png";
 import ContactUs from "./ContactUs.jsx";
-
 import Footer from "./Footer.jsx";
 import Amenities from "./amenities.jsx";
-
 import Feedback from "./feedback.jsx";
+import AnimatedSection from "./AnimatedSection.jsx";
 import "./Home.css"; // ✅ Import CSS file
 
 const Home = () => {
@@ -88,21 +87,28 @@ const Home = () => {
       </div>
 
       <div id="amenities">
-        <Amenities />
+        <AnimatedSection>
+          <Amenities />
+        </AnimatedSection>
       </div>
 
-
       <div id="feedback">
-        <Feedback />
+        <AnimatedSection>
+          <Feedback />
+        </AnimatedSection>
       </div>
 
       {/* Contact Us Section */}
       <div id="contact-us">
-        <ContactUs />
+        <AnimatedSection>
+          <ContactUs />
+        </AnimatedSection>
       </div>
 
       <div style={{ marginTop: "-100px" }}>
-        <Footer />
+        <AnimatedSection>
+          <Footer />
+        </AnimatedSection>
       </div>
     </>
   );
