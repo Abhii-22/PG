@@ -29,7 +29,7 @@ const Areas = () => {
     useEffect(() => {
     const fetchPgsAndConstructAreas = async () => {
       try {
-        const response = await axios.get('/api/pgs');
+        const response = await axios.get('http://localhost:5000/api/pgs');
         const pgs = response.data;
 
         const pgsByArea = pgs.reduce((acc, pg) => {
