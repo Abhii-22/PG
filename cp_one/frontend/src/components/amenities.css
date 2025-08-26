@@ -1,0 +1,59 @@
+/* PG Amenities Section Styling */
+.amenities-section {
+  padding: 60px 20px;
+  background-color: #f8f9fa; /* Light grey background for the whole section */
+}
+
+.heading {
+  text-align: center;
+  font-size: 2rem; /* Slightly larger heading */
+  color: rgb(35,65,75); /* Dark blue-grey color */
+  margin-bottom: 50px; /* More space below the heading */
+  font-weight: 700; /* Bolder font */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.amenities-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 25px; /* Space between cards */
+  max-width: 1200px;
+  margin: 0 auto; /* Center the grid */
+}
+
+.amenity-item {
+  background: #ffffff; /* White background for cards */
+  border-radius: 15px; /* More rounded corners */
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Softer shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  border: 1px solid #e9ecef; /* Subtle border */
+}
+
+.amenity-item:hover {
+  transform: translateY(-8px) scale(1.03); /* Lift and scale up on hover */
+  box-shadow: 0 12px 25px rgba(254, 255, 255, 0.15); /* Colored shadow on hover */
+}
+
+.icon-box {
+  margin-bottom: 15px;
+}
+
+.icon-box .bi {
+  font-size: 3rem; /* Larger icons */
+  color: #888; /* A nice shade of gray */
+  transition: color 0.3s ease;
+}
+
+.amenity-item:hover .icon-box .bi {
+  color: #555; /* Darker gray on hover */
+}
+
+.amenity-label {
+  font-size: 1rem;
+  font-weight: 600; /* Slightly bolder label */
+  color: #34495e; /* Dark grey for text */
+  line-height: 1.4;
+}
