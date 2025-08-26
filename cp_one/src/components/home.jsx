@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
-import areasData from "../data/pgData";
 import logo from "../assets/Medini logo White.png";
 import ContactUs from "./ContactUs.jsx";
 import Footer from "./Footer.jsx";
@@ -10,6 +10,7 @@ import AnimatedSection from "./AnimatedSection.jsx";
 import "./Home.css"; // ✅ Import CSS file
 
 const Home = () => {
+  const [areasData, setAreasData] = useState([]);
   const [active, setActive] = useState("Home");
   const [showNavbar, setShowNavbar] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,6 +24,21 @@ const Home = () => {
     clearTimeout(timeoutId.current);
     timeoutId.current = setTimeout(() => setShowNavbar(false), 2000);
   };
+
+    useEffect(() => {
+    const fetchAreas = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/api/pgs');
+            const pgs = response.data;
+            const uniqueAreaNames = [...new Set(pgs.map(pg => pg.area))];
+            const areaObjects = uniqueAreaNames.map(name => ({ name }));
+            setAreasData(areaObjects);
+        } catch (error) {
+            console.error("Error fetching areas:", error);
+        }
+    };
+    fetchAreas();
+  }, []);
 
   const handleSearch = () => {
     const query = searchQuery.trim().toLowerCase();
@@ -98,30 +114,36 @@ const Home = () => {
         </header>
       </div>
 
-      {/* Background Section with Welcome Text */}
-      <div id="home" className="home-container">
-        <div className="home-overlay"></div>
-        <div className="home-content">
-          <h1 className="home-title">Find Your Perfect PG Today</h1>
-          <p className="home-subtitle">
-            Discover the best paying guest accommodations with all the amenities you need for a comfortable stay.
-          </p>
-          <div className="search-container">
-            <input
-              type="text"
-              placeholder="Enter an area to search..."
-              className="search-input"
-              value={searchQuery}
-              onChange={(e) => {
-                setSearchQuery(e.target.value);
-                setSearchError(""); // Clear error when user types
-              }}
-              onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-            />
-            <button className="search-button" onClick={handleSearch}>Search</button>
+      {/* Hero Section */}
+      <div id="home" className="hero-section">
+        <div className="hero-content-container">
+          <div className="hero-text">
+            <h1 className="home-title">
+              <span>Find</span> <span>Your</span> <span>Perfect</span> <span>PG</span> <span>Today</span>
+            </h1>
+            <p className="home-subtitle">
+              Discover the best paying guest accommodations with all the amenities you need for a comfortable stay.
+            </p>
+            <div className="search-container">
+              <input
+                type="text"
+                placeholder="Enter an area to search..."
+                className="search-input"
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setSearchError(""); // Clear error when user types
+                }}
+                onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+              />
+              <button className="search-button" onClick={handleSearch}>Search</button>
+            </div>
+            {searchError && <p className="search-error-message">{searchError}</p>}
+            <Link to="/areas" className="get-started-btn">Get Started</Link>
           </div>
-          {searchError && <p className="search-error-message">{searchError}</p>}
-          <Link to="/areas" className="get-started-btn">Get Started</Link>
+          <div className="hero-image">
+            <img src="/home-image.jpg" alt="Comfortable PG accommodation" />
+          </div>
         </div>
       </div>
 

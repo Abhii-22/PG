@@ -1,34 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import areasData from '../data/pgData';
+import axios from 'axios';
 import './Register.css';
 
 const Register = () => {
   const [searchParams] = useSearchParams();
   const [selectedPg, setSelectedPg] = useState(null);
 
-  useEffect(() => {
-    const areaName = searchParams.get('area');
+    useEffect(() => {
     const pgId = searchParams.get('pgId');
 
-    if (areaName && pgId) {
-      const area = areasData.find(a => a.name === areaName);
-      if (area) {
-        const pg = area.pgs.find(p => p.id === parseInt(pgId, 10));
-        setSelectedPg(pg);
-        if (pg) {
-          setFormData(prevData => ({ ...prevData, pgName: pg.name, sharing: pg.sharing }));
+    if (pgId) {
+      const fetchPgDetails = async () => {
+        try {
+          const response = await axios.get('http://localhost:5000/api/pgs');
+          const pgs = response.data;
+          const pg = pgs.find(p => p._id === pgId);
+          setSelectedPg(pg);
+                    if (pg) {
+            setFormData(prevData => ({ 
+              ...prevData, 
+              pgName: pg.name, 
+              sharing: pg.sharing,
+              price: pg.price,
+              gender: pg.gender
+            }));
+          }
+        } catch (error) {
+          console.error('Error fetching PG details:', error);
         }
-      }
+      };
+      fetchPgDetails();
     }
   }, [searchParams]);
 
-  const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState({
     name: '',
     email: '',
     sharing: '',
     phoneNumber: '',
     pgName: '',
+    price: '',
+    gender: '',
   });
 
   const handleChange = (e) => {
@@ -114,7 +127,7 @@ const Register = () => {
               required
             />
           </div>
-          <div className="form-group">
+                    <div className="form-group">
             <label htmlFor="sharing">Sharing</label>
             <input
               type="text"
@@ -123,6 +136,26 @@ const Register = () => {
               value={formData.sharing}
               onChange={handleChange}
               required
+              disabled
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="price">Price</label>
+            <input
+              type="text"
+              id="price"
+              name="price"
+              value={formData.price ? `₹${formData.price.toLocaleString()}` : ''}
+              disabled
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="gender">For</label>
+            <input
+              type="text"
+              id="gender"
+              name="gender"
+              value={formData.gender}
               disabled
             />
           </div>

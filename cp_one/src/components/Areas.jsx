@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Star, Wifi, Tv, Refrigerator, WashingMachine } from 'lucide-react';
 import './Areas.css';
-import areasData from '../data/pgData';
+import staticAreasData from '../data/pgData';
 
 
 const pageVariants = {
@@ -19,10 +20,41 @@ const pageTransition = {
 };
 
 const Areas = () => {
+  const [areasData, setAreasData] = useState([]);
   const [selectedArea, setSelectedArea] = useState(null);
   const [selectedPg, setSelectedPg] = useState(null);
   const [currentImage, setCurrentImage] = useState(0);
   const location = useLocation();
+
+    useEffect(() => {
+    const fetchPgsAndConstructAreas = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/pgs');
+        const pgs = response.data;
+
+        const pgsByArea = pgs.reduce((acc, pg) => {
+          const areaName = pg.area;
+          if (!acc[areaName]) {
+            acc[areaName] = [];
+          }
+          acc[areaName].push(pg);
+          return acc;
+        }, {});
+
+        const dynamicAreasData = staticAreasData.map(area => ({
+          ...area,
+          pgs: pgsByArea[area.name] || []
+        }));
+
+        setAreasData(dynamicAreasData);
+
+      } catch (error) {
+        console.error('Error fetching PGs:', error);
+      }
+    };
+
+    fetchPgsAndConstructAreas();
+  }, []);
 
   useEffect(() => {
     if (location.state?.searchQuery) {
@@ -157,7 +189,7 @@ const Areas = () => {
                     <div className="pg-detailed-footer">
                       <div className="d-flex justify-content-start">
                         <a href="#contact-us" className="btn btn-danger">contact now</a>
-                        <a href={`/register?area=${selectedArea.name}&pgId=${pg.id}`} className="btn btn-success ms-2">Book Now</a>
+                        <a href={`/register?pgId=${pg._id}`} className="btn btn-success ms-2">Book Now</a>
                       </div>
                       <span className={`gender-tag ${pg.gender.toLowerCase()}`}>{pg.gender}</span>
                     </div>

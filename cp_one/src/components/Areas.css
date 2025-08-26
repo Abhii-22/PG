@@ -146,10 +146,11 @@
 }
 
 .pg-detailed-info {
-    padding: 0.8rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-width: 0;
 }
 
 .pg-detailed-info.no-image {
@@ -206,14 +207,13 @@
 }
 
 .pg-description {
-    margin-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
     color: #495057;
     line-height: 1.4;
     font-size: 0.85rem;
 }
 
 .pg-facilities {
-    margin-top: auto;
     padding-top: 1rem;
     border-top: 1px solid #f0f0f0;
 }
@@ -253,7 +253,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.8rem;
+    margin-top: auto; 
 }
 
 .pg-detailed-footer .btn {
